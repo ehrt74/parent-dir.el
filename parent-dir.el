@@ -12,7 +12,7 @@
   "replace filepath at point with parent directory.
 Can be installed with
 `(use-package parent-dir
-  :vc (:url "https://github.com/ehrt74/parent-dir.el.git"
+  :vc (:url \"https://github.com/ehrt74/parent-dir.el.git\"
        :rev :newest)
   :bind (:map minibuffer-mode-map
          (\"C-^\" . #'parent-dir)))`
