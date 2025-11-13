@@ -1,4 +1,4 @@
-;;; parent-dir.el --- replace filepath at point with parent dir -*- lexical-binding: t; -*-
+;;; parent-dir.el --- replace filepath at point with parent directory -*- lexical-binding: t; -*-
 
 ;; Author: Ed Tavinor <edtavinor@posteo.de>
 ;; Maintainer: Ed Tavinor <edtavinor@posteo.de>
