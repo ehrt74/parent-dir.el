@@ -2,7 +2,7 @@
 
 ;; Author: Ed Tavinor <edtavinor@posteo.de>
 ;; Maintainer: Ed Tavinor <edtavinor@posteo.de>
-;; Version 0.0.1
+;; Version 0.0.2
 ;; Package-Requires: ((emacs "24"))
 ;; Keywords: extensions, lisp
 ;; URL: https://github.com/ehrt74/parent-dir.el
@@ -10,8 +10,12 @@
 
 (defun parent-dir ()
   "replace filepath at point with parent directory.
-I like to add this to `minibuffer-mode-map` with
-`(bind-key (kbd "C-^") #'mia/minibuffer-up-directory 'minibuffer-mode-map)`
+Can be installed with
+`(use-package parent-dir
+  :vc (:url "https://github.com/ehrt74/parent-dir.el.git"
+       :rev :newest)
+  :bind (:map minibuffer-mode-map
+         (\"C-^\" . #'parent-dir)))`
 "
   (interactive)
   (save-excursion
