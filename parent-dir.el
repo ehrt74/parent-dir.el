@@ -18,18 +18,12 @@ Can be installed with
          (\"C-^\" . #'parent-dir)))`
 "
   (interactive)
-  (save-excursion
-    (let ((bounds (bounds-of-thing-at-point 'filename)))
-      (goto-char (cdr bounds))
-      (if (search-backward "/" (car bounds) t 2)
-	  (progn
-	    (search-forward "/" (cdr bounds) t 1)
-	    (delete-region (point) (line-end-position)))
-	(let ((filename (buffer-substring (car bounds) (cdr bounds))))
-	  (when (string-equal (substring filename 0 1) "~")
-	    (progn
-	      (replace-string-in-region "~" (expand-file-name "~") (car bounds) (1+ (car bounds)))
-	      (parent-dir))))))))
+    (let* ((bounds (bounds-of-thing-at-point 'filename))
+	   (filename (buffer-substring (car bounds) (cdr bounds)))
+	   (replaced-filename (if (string-equal "~/" filename) (expand-file-name filename) filename))
+	   (new-filename (file-name-directory (directory-file-name replaced-filename))))
+      (replace-string-in-region filename new-filename (car bounds) (cdr bounds))
+      (goto-char (+ (car bounds) (length new-filename)))))
 
 (provide 'parent-dir)
 ;;; parent-dir.el ends here
